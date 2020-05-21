@@ -92,14 +92,14 @@ console.log(getWinnersByYear(getWinners, getYears));
 
 function getAverageGoals(data) {
 let avgHomeTeamGoals = data.reduce((goals, game, index)=>{
-    let gameCounter = index + 1;
-    return goals + game['Home Team Goals'] / gameCounter;
+    return goals + game['Home Team Goals'];
 },0);
+avgHomeTeamGoals /= data.length;
 
-let avgAwayTeamGoals = data.reduce((goals, game, index)=>{
-    let gameCounter = index + 1;
-    return goals + game['Away Team Goals'] / gameCounter;
+let avgAwayTeamGoals = data.reduce((goals, game, index)=>{  
+    return goals + game['Away Team Goals'];
 },0);
+avgAwayTeamGoals = avgAwayTeamGoals / data.length;
 
 return {
     avgHomeTeamGoals,
